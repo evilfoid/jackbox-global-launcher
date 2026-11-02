@@ -1,0 +1,17 @@
+# Game installs and archives (not distributed here)
+The Jackbox*/
+The.Jackbox*/
+*.zip
+
+# Python
+__pycache__/
+
+# Jonahbox build output, caches, models and local certs
+jonahbox/target/
+jonahbox/jb_cache/
+jonahbox/doodle_renders/
+jonahbox/voices/
+jonahbox/piper/
+jonahbox/tts/
+jonahbox/certs/
+*log

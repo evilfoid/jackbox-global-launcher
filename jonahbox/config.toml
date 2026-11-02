@@ -1,0 +1,88 @@
+# The host which your Jackbox games can access (through HTTPS)
+accessible_host = "192.168.0.202"
+# Whether the TUI should be ran when running this server, set
+# to false if this server is to be run as a daemon (we also
+# check if stdout is a TTY or not as well, so you can leave
+# this as true if running as a daemon)
+tui = true
+
+# Controls how the HTTP cache for `jackbox.tv` functions
+[cache]
+# The path which cached `jackbox.tv` assets are stored
+cache_path = "jb_cache"
+# How the cache operates
+#
+# Serves assets from `jackbox.tv`, checks if they
+# have changed, and re-aquires them if so
+#
+# cache_mode = "online"
+#
+# Serves assets from `jackbox.tv`, and only contacts 
+# the web if an asset is not already in the cache
+#
+cache_mode = "oneshot"
+#
+# Serves assets only from the cache, never contacts `jackbox.tv`
+#
+# cache_mode = "offline"
+
+# Allows pseudo post-game sharing by rendering completed doodles to a directory
+# Only works with games that use the doodle API.
+[doodles]
+# Whether to render completed doodles or not
+render = true
+# Where doodles should be rendered
+path = "doodle_renders"
+
+# Used in Mad Verse City for generating rap battles
+[tts]
+# The path to your `piper` executable
+piper_bin = "piper/piper.exe"
+# The path to your `ffmpeg` executable
+ffmpeg_bin = "C:/Users/Jaxal/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.2-full_build/bin/ffmpeg.exe"
+# The path to where the `piper` voices are located
+voices_path = "voices"
+# The path where generated TTS audio files are saved
+tts_dir = "tts"
+#
+# Generate TTS using `piper`
+#
+op_mode = "native"
+#
+# Ask `blobcast.server_url` to generate the TTS audio
+#
+# op_mode = "proxy"
+
+[ecast]
+# Any connections that go through in proxy mode will be proxied to the `server_url`
+#
+# op_mode = "proxy"
+#
+# Native mode means that all games are handled by *this* server implementation
+#
+op_mode = "native"
+#
+# The jackbox server to proxy to, only matters if op_mode="proxy"
+server_url = "https://ecast.jackboxgames.com"
+# server_url = "http://192.168.1.10:8888"
+
+# Same situation as the ecast configuration, but for the older API
+[blobcast]
+# op_mode = "proxy"
+op_mode = "native"
+server_url = "https://blobcast.jackboxgames.com"
+# server_url = "http://192.168.1.10:8080"
+
+# %%%% READ %%%%
+# Make sure these certificates are registered with your system.
+# If you can access the server through a web browser with no security
+# warnings, it should work.
+[tls]
+cert = "certs/192.168.0.202.pem"
+key = "certs/192.168.0.202-key.pem"
+
+# These defaults are the ports that the Jackbox games will try to connect to
+[ports]
+https = 443
+blobcast = 38203
+http = 80
